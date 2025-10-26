@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Вход" %} — ELEGSO{% endblock %}
+
+{% block content %}
+<article style="max-width:560px;margin:2rem auto;">
+  <header><h3 style="margin:0 0 .5rem;">{% trans "Вход в систему" %}</h3></header>
+
+  {% if form.non_field_errors %}
+    <div style="background:#3b0d0d;border:1px solid #7f1d1d;padding:.75rem 1rem;border-radius:.6rem;margin-bottom:1rem;">
+      {% for e in form.non_field_errors %}<div>{{ e }}</div>{% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    <label>
+      <span>Email</span>
+      {{ form.username }}
+      {% if form.username.errors %}
+        <small style="color:#fca5a5;">{{ form.username.errors|striptags }}</small>
+      {% endif %}
+    </label>
+
+    <label>
+      <span>{% trans "Пароль" %}</span>
+      {{ form.password }}
+      {% if form.password.errors %}
+        <small style="color:#fca5a5;">{{ form.password.errors|striptags }}</small>
+      {% endif %}
+    </label>
+
+    <div style="display:flex;gap:.6rem;align-items:center;margin-top:1rem;">
+      <button type="submit">{% trans "Войти" %}</button>
+      <a href="/">{% trans "Отмена" %}</a>
+    </div>
+  </form>
+</article>
+{% endblock %}

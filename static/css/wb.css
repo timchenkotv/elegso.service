@@ -1,0 +1,95 @@
+/* === Light header/menu (WB-like UX, светлая палитра) === */
+:root{
+  --header-height: 56px;
+  --bg: #ffffff;               /* фон страницы */
+  --fg: #0f172a;               /* основной текст (slate-900) */
+  --muted: #475569;            /* вторичный текст (slate-600) */
+  --line: #e5e7eb;             /* линии/бордеры (slate-200) */
+  --hover: #f8fafc;            /* hover фон (slate-50) */
+  --accent: #111827;           /* акцент для текста в меню */
+  --chip: #f1f5f9;             /* чипы/кнопки светлые */
+}
+
+/* Шрифт: аккуратный системный + Inter как fallback */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+html,body{
+  font-family: system-ui, -apple-system, "Segoe UI", Inter, Roboto, Arial, sans-serif;
+  background: var(--bg); color: var(--fg); margin:0;
+}
+a{color:inherit; text-decoration:none}
+
+/* Контейнер */
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* === HEADER === */
+.wb-header{
+  position:sticky; top:0; z-index:40;
+  height:var(--header-height);
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+  backdrop-filter: saturate(140%) blur(6px);
+}
+.wb-row{
+  height:var(--header-height);
+  display:flex; align-items:center; gap:12px;
+}
+
+/* Лого */
+.wb-logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; color:var(--accent)}
+.wb-dot{width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px #dcfce7 inset}
+
+/* Навигация — верхний ряд */
+.wb-nav{display:flex; align-items:center; gap:6px; margin-left:14px}
+.wb-nav > .item{
+  position:relative; padding:9px 12px; border-radius:10px; font-weight:500; color:var(--accent);
+  transition: background .15s ease, transform .12s ease;
+}
+.wb-nav > .item:hover{background: var(--hover); transform: translateY(-1px);}
+
+/* Подменю: «вытекает» вниз, белое, с тенью */
+.wb-nav .item .submenu{
+  position:absolute; left:0; top:calc(100% + 8px);
+  min-width:280px; background:#fff; color:var(--fg);
+  border:1px solid var(--line); border-radius:14px;
+  box-shadow: 0 12px 30px rgba(15,23,42,.12);
+  overflow:hidden;
+
+  opacity:0; transform:translateY(-6px); pointer-events:none;
+  transition: opacity .16s ease, transform .16s ease;
+}
+.wb-nav .item:hover .submenu{opacity:1; transform:translateY(0); pointer-events:auto;}
+
+.submenu .group{padding:8px}
+.submenu a{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 12px; border-radius:10px; color:var(--fg);
+}
+.submenu a:hover{background: var(--hover)}
+
+/* Правая панель */
+.wb-right{margin-left:auto; display:flex; align-items:center; gap:10px}
+.wb-search{
+  display:flex; align-items:center; gap:8px;
+  background: #fff;
+  border:1px solid var(--line);
+  border-radius:12px; padding:6px 10px;
+}
+.wb-search input{
+  background: transparent; border:0; outline:0; color:var(--fg); width:220px;
+}
+.wb-search input::placeholder{color:var(--muted)}
+
+.wb-lang select, .wb-auth a, .wb-auth form button{
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--fg); border-radius:10px; padding:6px 10px;
+}
+.wb-auth form button{cursor:pointer}
+.wb-lang select{appearance:none}
+
+/* Контент под шапкой */
+main{padding:18px 0}
+.card{
+  background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px;
+  box-shadow: 0 6px 20px rgba(15,23,42,.06);
+}

@@ -1,0 +1,159 @@
+{% load i18n %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ELEGSO{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Шрифт максимально похожий на «магазинный» стиль -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="/static/css/menu.css" rel="stylesheet">
+  <script defer src="/static/js/menu.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/">ELEGSO</a>
+
+    <nav class="menubar" role="navigation" aria-label="Main">
+      <!-- Справочники -->
+      <div class="menu-item has-sub">
+        <button class="mi-btn">{% trans "Справочники" %}</button>
+        <div class="submenu">
+          <a href="#" class="group">{% trans "Контрагенты" %}</a>
+          <div class="subcols">
+            <div class="col">
+              <a href="#">{% trans "Контрагенты" %}</a>
+              <a href="#">{% trans "Контактные лица" %}</a>
+              <a href="#">{% trans "Банковские счета" %}</a>
+              <a href="#">{% trans "Банковские коды" %}</a>
+              <a href="#">{% trans "Виды деятельности" %}</a>
+            </div>
+            <div class="col">
+              <a href="#">{% trans "Страны и юрисдикции" %}</a>
+              <a href="#">{% trans "Пользователи системы" %}</a>
+              <a href="#">{% trans "Языки интерфейса" %}</a>
+            </div>
+            <div class="col">
+              <span class="muted">{% trans "Константовые справочники" %}</span>
+              <a href="#">{% trans "Типы контрагентов" %}</a>
+              <a href="#">{% trans "Типы телефонов/почт" %}</a>
+              <a href="#">{% trans "Профили стран" %}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Документы -->
+      <div class="menu-item has-sub">
+        <button class="mi-btn">{% trans "Документы" %}</button>
+        <div class="submenu">
+          <div class="subcols">
+            <div class="col">
+              <span class="muted">{% trans "Договоры" %}</span>
+              <a href="#">{% trans "Аренда / Лизинг" %}</a>
+              <a href="#">{% trans "Купля-продажа" %}</a>
+              <a href="#">{% trans "Подряды / Услуги" %}</a>
+            </div>
+            <div class="col">
+              <span class="muted">{% trans "Акты и счета" %}</span>
+              <a href="#">{% trans "Счета на оплату" %}</a>
+              <a href="#">{% trans "Акты выполненных работ" %}</a>
+              <a href="#">{% trans "Платёжные поручения" %}</a>
+            </div>
+            <div class="col">
+              <span class="muted">{% trans "Судебные документы" %}</span>
+              <a href="#">{% trans "Иски / Отзывы / Возражения" %}</a>
+              <a href="#">{% trans "Определения / Решения" %}</a>
+              <a href="#">{% trans "Исполнительные листы" %}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Отчёты -->
+      <div class="menu-item has-sub">
+        <button class="mi-btn">{% trans "Отчёты" %}</button>
+        <div class="submenu">
+          <a href="#">{% trans "Реестр контрагентов" %}</a>
+          <a href="#">{% trans "Финансовые сводки" %}</a>
+          <a href="#">{% trans "Судебная активность" %}</a>
+          <a href="#">{% trans "Анализ документов" %}</a>
+          <a href="#">{% trans "Пользовательская статистика" %}</a>
+        </div>
+      </div>
+
+      <!-- Калькуляторы -->
+      <div class="menu-item has-sub">
+        <button class="mi-btn">{% trans "Калькуляторы" %}</button>
+        <div class="submenu">
+          <a href="#">{% trans "Расчёт неустойки" %}</a>
+          <a href="#">{% trans "Проценты по 395 ГК РФ" %}</a>
+          <a href="#">{% trans "Арендные платежи" %}</a>
+          <a href="#">{% trans "Судебные расходы" %}</a>
+          <a href="#">{% trans "Налоговые удержания" %}</a>
+        </div>
+      </div>
+
+      <!-- Сервис -->
+      <div class="menu-item has-sub">
+        <button class="mi-btn">{% trans "Сервис" %}</button>
+        <div class="submenu">
+          <span class="muted">{% trans "Настройки клиента" %}</span>
+          <a href="#">{% trans "Генерация кодов" %}</a>
+          <a href="#">{% trans "Форматы дат и чисел" %}</a>
+          <a href="#">{% trans "Тема оформления" %}</a>
+          <a href="#">{% trans "Язык интерфейса" %}</a>
+          <hr>
+          <a href="#">{% trans "Права и роли пользователей" %}</a>
+          <a href="#">{% trans "Импорт / Экспорт данных" %}</a>
+          <a href="#">{% trans "Интеграции (API, внешние сервисы)" %}</a>
+          <a href="#">{% trans "Управление уведомлениями" %}</a>
+        </div>
+      </div>
+
+      <!-- Администрирование -->
+      <div class="menu-item has-sub">
+        <button class="mi-btn">{% trans "Администрирование" %}</button>
+        <div class="submenu">
+          <a href="#">{% trans "Зарегистрированные клиенты" %}</a>
+          <a href="#">{% trans "Управление базами данных" %}</a>
+          <a href="#">{% trans "Системные логи и аудит" %}</a>
+          <a href="#">{% trans "Планировщик задач / Cron" %}</a>
+          <a href="#">{% trans "Управление лицензиями" %}</a>
+          <a href="#">{% trans "Резервное копирование / Восстановление" %}</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="right">
+      <form method="post" action="/i18n/setlang/" class="langform">
+        {% csrf_token %}
+        <select name="language" onchange="this.form.submit()">
+          <option value="ru" {% if LANGUAGE_CODE|slice:":2" == 'ru' %}selected{% endif %}>RU</option>
+          <option value="en" {% if LANGUAGE_CODE|slice:":2" == 'en' %}selected{% endif %}>EN</option>
+        </select>
+        <input type="hidden" name="next" value="{{ request.path }}">
+      </form>
+      {% if request.user.is_authenticated %}
+        <a href="/admin/">{% trans "Админ" %}</a>
+        <a href="/accounts/logout/">{% trans "Выход" %}</a>
+      {% else %}
+        <a href="/accounts/login/">{% trans "Вход" %}</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  {% block content %}
+    <article class="welcome">
+      <h3>ELEGSO</h3>
+      <p>{% trans "Выберите раздел в верхнем меню." %}</p>
+    </article>
+  {% endblock %}
+</main>
+</body>
+</html>
